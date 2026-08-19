@@ -81,3 +81,12 @@ button {
 #btn-triplicar:hover {
   background-color: #22543d;
 }
+
+#btn-mitad {
+  background-color: #c05621;
+  color: white;
+}
+
+#btn-mitad:hover {
+  background-color: #9c4221;
+}
