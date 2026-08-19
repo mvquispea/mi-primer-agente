@@ -24,3 +24,8 @@ function triplicar() {
   cuenta *= 3;
   document.getElementById('contador').textContent = cuenta;
 }
+
+function mitad() {
+  cuenta = Math.floor(cuenta / 2);
+  document.getElementById('contador').textContent = cuenta;
+}
