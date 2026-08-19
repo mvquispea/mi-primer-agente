@@ -19,3 +19,8 @@ function duplicar() {
   cuenta *= 2;
   document.getElementById('contador').textContent = cuenta;
 }
+
+function triplicar() {
+  cuenta *= 3;
+  document.getElementById('contador').textContent = cuenta;
+}

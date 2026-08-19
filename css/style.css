@@ -72,3 +72,12 @@ button {
 #btn-duplicar:hover {
   background-color: #553c9a;
 }
+
+#btn-triplicar {
+  background-color: #276749;
+  color: white;
+}
+
+#btn-triplicar:hover {
+  background-color: #22543d;
+}
