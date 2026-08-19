@@ -1,25 +1,38 @@
 let cuenta = 0;
 const historial = [];
 
+function actualizarContador() {
+  document.getElementById('contador').textContent = cuenta;
+}
+
+function renderHistorial() {
+  document.getElementById('historial').innerHTML =
+    historial.map(e => `<li>${e}</li>`).join('');
+}
+
 function registrar(nombre, anterior, nuevo) {
   historial.push(`${nombre}: ${anterior} → ${nuevo}`);
   if (historial.length > 5) historial.shift();
-  const lista = document.getElementById('historial');
-  lista.innerHTML = historial.map(e => `<li>${e}</li>`).join('');
+  renderHistorial();
 }
 
-function aumentar() {
+function aplicarOperacion(nombre, fn) {
   const anterior = cuenta;
-  cuenta++;
-  document.getElementById('contador').textContent = cuenta;
-  registrar('Aumentar', anterior, cuenta);
+  cuenta = fn(cuenta);
+  actualizarContador();
+  registrar(nombre, anterior, cuenta);
 }
+
+function aumentar()  { aplicarOperacion('Aumentar',  c => c + 1); }
+function duplicar()  { aplicarOperacion('Duplicar',  c => c * 2); }
+function triplicar() { aplicarOperacion('Triplicar', c => c * 3); }
+function mitad()     { aplicarOperacion('Mitad',     c => Math.floor(c / 2)); }
 
 function disminuir() {
   if (cuenta > 0) {
     const anterior = cuenta;
     cuenta--;
-    document.getElementById('contador').textContent = cuenta;
+    actualizarContador();
     registrar('Disminuir', anterior, cuenta);
   }
 }
@@ -27,27 +40,6 @@ function disminuir() {
 function reiniciar() {
   const anterior = cuenta;
   cuenta = 0;
-  document.getElementById('contador').textContent = cuenta;
+  actualizarContador();
   registrar('Reiniciar', anterior, cuenta);
-}
-
-function duplicar() {
-  const anterior = cuenta;
-  cuenta *= 2;
-  document.getElementById('contador').textContent = cuenta;
-  registrar('Duplicar', anterior, cuenta);
-}
-
-function triplicar() {
-  const anterior = cuenta;
-  cuenta *= 3;
-  document.getElementById('contador').textContent = cuenta;
-  registrar('Triplicar', anterior, cuenta);
-}
-
-function mitad() {
-  const anterior = cuenta;
-  cuenta = Math.floor(cuenta / 2);
-  document.getElementById('contador').textContent = cuenta;
-  registrar('Mitad', anterior, cuenta);
 }
