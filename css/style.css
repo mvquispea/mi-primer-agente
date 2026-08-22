@@ -6,6 +6,8 @@ body {
   justify-content: center;
   min-height: 100vh;
   margin: 0;
+  padding: 1.5rem 1rem;
+  box-sizing: border-box;
   background-color: #f0f4f8;
   color: #1a202c;
 }
@@ -25,16 +27,30 @@ h1 {
 
 .botones {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
+  width: 100%;
+  max-width: 480px;
 }
 
 button {
-  padding: 0.75rem 2rem;
+  flex: 1 1 45%;
+  padding: 0.75rem 1.5rem;
   font-size: 1rem;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
+button:focus-visible {
+  outline: 3px solid #2b6cb0;
+  outline-offset: 2px;
 }
 
 #btn-aumentar {
@@ -95,7 +111,7 @@ button {
   list-style: none;
   padding: 0;
   margin-top: 2rem;
-  width: 280px;
+  width: min(280px, 100%);
   font-size: 0.9rem;
   color: #4a5568;
 }
@@ -106,4 +122,26 @@ button {
   margin-bottom: 0.4rem;
   background-color: #fff;
   border-radius: 0 6px 6px 0;
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  #contador {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .botones {
+    gap: 0.75rem;
+  }
+
+  button {
+    flex: 1 1 100%;
+    padding: 0.9rem 1.5rem;
+    font-size: 1.05rem;
+  }
 }
